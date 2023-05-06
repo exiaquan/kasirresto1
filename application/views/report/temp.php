@@ -2,7 +2,7 @@
 	
 	<?php
 		// $inv = $crud->reportInv($yr,$c)->result();
-		$inv = $crud->reportInv($yr)->result();
+		$inv = $crud->reportInv($yr,$yr1)->result();
 	?>
 	<tr>
 		<th class="text-uppercase">No.</th>

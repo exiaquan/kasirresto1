@@ -123,14 +123,19 @@ class Crud extends CI_Model {
         }
     }
 
-    public function reportInv($yr){
+    public function reportInv($yr,$yr1){
         $mytgl = '';
-        if($yr != NULL){$mytgl = date('Y-m-d',strtotime($yr));}
+        $mytgl1 = '';
+        if($yr != NULL && $yr1 != NULL){
+            $mytgl = date('Y-m-d',strtotime($yr));
+            $mytgl1 = date('Y-m-d',strtotime($yr1));
+        }
+
         $this->db->select('*,a.diskon_persen as diskon');
         $this->db->from('invoice a');
         $this->db->join('d_invoice b','a.id=b.id_invoice');
         $this->db->where('a.tgl_invoice >= ',$mytgl.' 00:00:00');
-        $this->db->where('a.tgl_invoice <= ',$mytgl.' 23:59:59');
+        $this->db->where('a.tgl_invoice <= ',$mytgl1.' 23:59:59');
         $this->db->order_by('a.tgl_invoice','asc');
         return $this->db->get();
     }

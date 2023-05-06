@@ -21,7 +21,9 @@ class Report extends CI_Controller {
 
 	public function reportInvTemp(){
 		$thn = $this->input->post('tahun');
+		$thn1 = $this->input->post('tahun1');
 		$data['yr'] = $thn;
+		$data['yr1'] = $thn1;
 		$data['crud'] = $this->crud;
 		$this->load->view('report/temp',$data);
 	}

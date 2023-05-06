@@ -6,7 +6,7 @@
 				
 				<div class="col-md-12">
 					<div class="col-md-1">
-						<label class="text-uppercase">Tahun</label>
+						<label class="text-uppercase">Tanggal</label>
 					</div>
 					<div class="col-md-3">
 						<!-- <select class="form-control" id="tahun">
@@ -16,10 +16,14 @@
 						</select> -->
 
 						<input type="text" class="form-control datepicker" id="tahun">
+						
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control datepicker" id="tahun1">
 					</div>
 					<div class="col-md-2">
 						<button type="button" class="btn btn-primary" onclick="loadTemp();"><i class="fa fa-search"></i> Proses</button>
-						<button type="button" class="btn btn-default" onclick="printData();"><i class="fa fa-print"></i> Print</button>
+						<button type="button" class="btn btn-default" onclick="printData('temp');"><i class="fa fa-print"></i> Print</button>
 					</div>
 				</div>
 
@@ -46,7 +50,8 @@ $(document).ready(function(){
 
 function loadTemp(){
 	var d = {
-		tahun:$('#tahun').val()
+		tahun:$('#tahun').val(),
+		tahun1:$('#tahun1').val()
 	};
 
 	$.ajax({
@@ -61,5 +66,18 @@ function loadTemp(){
 			$('#temp').html(xhr.responseText);
 		}
 	});
+}
+
+function printData(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+
+	 location.reload(1);
 }
 </script>
