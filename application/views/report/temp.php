@@ -6,6 +6,7 @@
 	?>
 	<tr>
 		<th class="text-uppercase">No.</th>
+		<th class="text-uppercase">Tgl Trs</th>
 		<th class="text-uppercase">Kode Barang</th>
 		<th class="text-uppercase">Nama Barang</th>
 		<th class="text-uppercase">Qty</th>
@@ -19,6 +20,7 @@
 	foreach($inv as $i):?>
 	<tr>
 		<td><?php echo $no;?></td>
+		<td class="text-uppercase"><?php echo $i->tgl_invoice;?></td>
 		<td class="text-uppercase"><?php echo $i->kode_produk;?></td>
 		<td class="text-uppercase"><?php echo $i->nama_produk;?></td>
 		<td class="text-uppercase text-right"><?php echo $i->jumlah.' '.$i->satuan_produk;?></td>
