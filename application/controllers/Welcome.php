@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 		if($this->session->userdata('sts_login') != true){
 			redirect('Login');
 		}else{
-			redirect('main/profile');
+			redirect(base_url().'main/profile');
 		}
 		//$this->load->view('welcome_message');
 	}

@@ -104,7 +104,7 @@ $('#form-login').submit(function(e){
 
   var form = $('#form-login');
   $.ajax({
-    url:'./login/getLogin',
+    url:'<?php echo base_url();?>login/getLogin',
     type:'POST',
     data:form.serialize(),
     beforeSend:function(){

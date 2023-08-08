@@ -64,6 +64,33 @@ class Profile extends CI_Controller {
 
 	}
 
+	public function updatePassword(){
+		$form = $this->form_valid;
+	 	$input = $this->input;
+
+	 	$form->set_rules('password','<b>Password Baru</b>','required');
+	 	$form->set_rules('cpassword','<b>Konfirm Password</b>','required|matches[password]');
+
+	 	if($form->run() == FALSE){
+	 		echo '<div class="alert alert-warning">'.validation_errors().'</div>';
+	 	}else{
+	 		$whr = array(
+	 			'id'=>$input->post('id_user')
+	 		);
+
+	 		$data = array(
+	 			'pass'=>$this->sec_key->encrypt($input->post('password'))
+	 		);
+
+	 		$respon = $this->crud->updData('users',$whr,$data);
+	 		if($respon['code'] == 0){
+	 			echo '<div class="alert alert-success">Update password berhasil</div>';
+	 		}else{
+	 			echo '<div class="alert alert-warning">Update password gagal</div>';
+	 		}
+	 	}
+	}
+
  	public function updateHakAkses(){
 	 	$form = $this->form_valid;
 	 	$input = $this->input;
